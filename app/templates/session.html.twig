@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Session: {{ sessionData }}
+{% endblock %}
+
+
+{% block body %}
+    <h3>$_SESSION['username'] = {{ sessionData }}</h3>
+{% endblock %}

@@ -1,0 +1,17 @@
+google_search:
+    path: /google/{query}
+    controller: App\Controller\HomeworkController::googleSearch
+    defaults:
+      query: itea
+    requirements:
+      query: \w+
+    methods: [GET, POST]
+
+yahoo_search:
+    path: /yahoo/{query}
+    controller: App\Controller\HomeworkController::yahooSearch
+    defaults:
+      query: 777
+    requirements:
+      query: \d+
+    methods: [GET, POST]
