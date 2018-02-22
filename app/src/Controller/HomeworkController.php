@@ -16,6 +16,27 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class HomeworkController extends Controller
 {
+    private const MENU = [
+        'Home',
+        [
+            'Contact',
+            'Write us',
+            'Contact page',
+            'Something else',
+        ],
+        'About',
+        'Projects',
+        [
+            'Products',
+            'TV',
+            'Radio',
+            'MP3',
+            'Phone',
+            'Games',
+        ],
+        'Company ',
+    ];
+
     public function welcome()
     {
         return $this->render('homework/welcome.html.twig');
@@ -97,27 +118,6 @@ class HomeworkController extends Controller
      */
     public function drawMenu()
     {
-        $menu = [
-            'Home',
-            [
-                'Contact',
-                'Write us',
-                'Contact page',
-                'Somethimg else',
-            ],
-            'About',
-            'Projects',
-            [
-                'Products',
-                'TV',
-                'Radio',
-                'MP3',
-                'Phone',
-                'Games',
-            ],
-            'Company ',
-        ];
-
-        return $this->render('menu/menu.html.twig', ['menu' => $menu]);
+        return $this->render('menu/menu.html.twig', ['menu' => self::MENU]);
     }
 }
