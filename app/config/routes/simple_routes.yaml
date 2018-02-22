@@ -1,3 +1,5 @@
 hello:
     path: /hello/{name}
     controller: App\Controller\HomeworkController::showTemplate
+    defaults:
+      name: Sergey

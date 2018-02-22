@@ -1,0 +1,16 @@
+{% for item in menu %}
+    <div class="dropdown">
+        {% if item is iterable %}
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ item[0] }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for i in 1..item|length - 1 %}
+                    <a class="dropdown-item" href="#">{{ item[i] }}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <a class="btn btn-secondary dropdown-toggle"href="#">{{ item }}</a>
+        {% endif %}
+    </div>
+{% endfor %}

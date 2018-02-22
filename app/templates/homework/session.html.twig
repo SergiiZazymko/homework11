@@ -6,5 +6,6 @@
 
 
 {% block body %}
+    {{ parent() }}
     <h3>$_SESSION['username'] = {{ sessionData }}</h3>
 {% endblock %}

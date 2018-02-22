@@ -27,7 +27,12 @@ class HomeworkController extends Controller
     }
 
     /**
-     * @Route("/age/{number}", name="age_array", defaults={"number" : 33}, requirements={"number" : "\d+"})
+     * @Route(
+     *     "/age/{number}",
+     *     name="age_array",
+     *     defaults={"number" : 33},
+     *     requirements={"number" : "\d+"}
+     *     )
      */
     public function ageArray($number)
     {
@@ -35,7 +40,11 @@ class HomeworkController extends Controller
     }
 
     /**
-     * @Route("/user/{name}", name="user_name", defaults={"name" : "username"})
+     * @Route(
+     *     "/user/{name}",
+     *     name="user_name",
+     *     defaults={"name" : "username"}
+     *     )
      */
     public function userName($name, SessionInterface $session)
     {
@@ -44,12 +53,15 @@ class HomeworkController extends Controller
     }
 
     /**
-     * @Route("/get_session", name="get_session")
+     * @Route(
+     *     "/get_session",
+     *     name="get_session"
+     * )
      */
     public function forwardMethod(SessionInterface $session)
     {
         $username = $session->get('username') ?? 'undefined';
-        return $this->render('session.html.twig', ['sessionData' => $username]);
+        return $this->render('homework/session.html.twig', ['sessionData' => $username]);
     }
 
     public function googleSearch($query)
@@ -63,10 +75,49 @@ class HomeworkController extends Controller
     }
 
     /**
-     * @Route("/post/page/{number}", methods={"GET"}, requirements={"number" : "^[1-9]|[1-9]\d$"})
+     * @Route(
+     *     "/post/page/{number}",
+     *     name="page_number",
+     *     defaults={"number" : 1},
+     *     methods={"GET"},
+     *     requirements={"number" : "^[1-9]|[1-9]\d$"}
+     *     )
      */
     public function pageNumber($number)
     {
-        return $this->render('page.html.twig', ['number' => $number]);
+        //$this->drawMenu();
+        return $this->render('homework/page.html.twig', ['number' => $number]);
+    }
+
+    /**
+     * @Route(
+     *     "/menu",
+     *     name="menu"
+     * )
+     */
+    public function drawMenu()
+    {
+        $menu = [
+            'Home',
+            [
+                'Contact',
+                'Write us',
+                'Contact page',
+                'Somethimg else',
+            ],
+            'About',
+            'Projects',
+            [
+                'Products',
+                'TV',
+                'Radio',
+                'MP3',
+                'Phone',
+                'Games',
+            ],
+            'Company ',
+        ];
+
+        return $this->render('menu/menu.html.twig', ['menu' => $menu]);
     }
 }
