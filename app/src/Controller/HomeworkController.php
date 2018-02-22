@@ -12,19 +12,18 @@ namespace App\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class HomeworkController extends Controller
 {
     public function welcome()
     {
-        return new Response('Welcome to Symfony');
+        return $this->render('homework/welcome.html.twig');
     }
 
     public function showTemplate($name)
     {
-        return $this->render('hello.html.twig', ['name' => $name]);
+        return $this->render('homework/hello.html.twig', ['name' => ucwords($name)]);
     }
 
     /**
